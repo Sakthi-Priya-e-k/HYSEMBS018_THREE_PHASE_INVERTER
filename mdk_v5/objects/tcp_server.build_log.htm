@@ -1,0 +1,120 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.41.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Ananthukrishnan U, Hyovis, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.41.0.0
+Toolchain Path:  C:\Users\Admin\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
+CPU DLL:         SARMCM3.DLL V5.41.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      CMSIS_AGDI.dll V1.33.21.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+C:\Users\Admin\Downloads\ARTERY_PROGRAM_TIMER_12_11\project\at_start_f407\examples\emac\tcp_server\mdk_v5\tcp_server.uvprojx
+Project File Date:  02/17/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.22', folder: 'C:\Users\Admin\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'tcp_server'
+../src/main.c(240): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+  240 |         for (uint32_t i = 0; i < length; i++) {
+      |              ^
+../src/main.c(1250): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+ 1250 |         for (int i = 0; i < 3; i++) {
+      |              ^
+../src/main.c(1261): warning: non-void function does not return a value [-Wreturn-type]
+ 1261 | }
+      | ^
+../src/main.c(1273): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+ 1273 |         for (int i = 0; i < 3; i++) {
+      |              ^
+../src/main.c(1323): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+ 1323 |         for (int i = 0; i < 3; i++) {
+      |              ^
+../src/main.c(1462): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+ 1462 |                         for (int i = 0; i < reg_count; i++) {
+      |                              ^
+../src/main.c(1614): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+ 1614 |                                 for (int i = 0; i < 3; i++) {
+      |                                      ^
+../src/main.c(2611): warning: format specifies type 'unsigned long' but the argument has type 'unsigned int' [-Wformat]
+ 2611 |         printf("System Core Clock Frequency: %lu Hz\n", system_core_clock);
+      |                                              ~~~        ^~~~~~~~~~~~~~~~~
+      |                                              %u
+../src/main.c(2613): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+ 2613 |         printf("APB1 Frequency: %lu Hz\n", crm_clocks_freq_struct.apb1_freq);
+      |                                 ~~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 %u
+../src/main.c(2614): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+ 2614 |         printf("APB2 Frequency: %lu Hz\n", crm_clocks_freq_struct.apb2_freq);
+      |                                 ~~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 %u
+../src/main.c(2615): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+ 2615 |         printf("AHB Frequency: %lu Hz\n", crm_clocks_freq_struct.ahb_freq);
+      |                                ~~~        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                %u
+11 warnings generated.
+compiling main.c...
+linking...
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_interrupt_flag_get (referred from at32f403a_407_int.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_flag_clear (referred from at32f403a_407_int.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_default_para_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_i2s_dma_transmitter_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_i2s_dma_receiver_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_i2s_data_transmit (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_i2s_flag_get (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol spi_i2s_data_receive (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_ordinary_software_trigger_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol dma_reset (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol dma_default_para_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol dma_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol dma_channel_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_combine_mode_select (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_base_default_para_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_base_config (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_ordinary_channel_set (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_ordinary_conversion_trigger_set (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_dma_mode_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_voltage_monitor_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_voltage_monitor_threshold_value_set (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_voltage_monitor_single_channel_select (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_interrupt_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_enable (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_calibration_init (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_calibration_init_status_get (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_calibration_start (referred from main.o).
+.\objects\tcp_server.axf: Error: L6218E: Undefined symbol adc_calibration_status_get (referred from main.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 30 error messages.
+".\objects\tcp_server.axf" - 30 Error(s), 11 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.Cortex_DFP.1.1.0.pack
+                ARM::Cortex_DFP@1.1.0
+                ARM Cortex Reference Subsystems Device Family Pack
+
+<h2>Collection of Component include folders:</h2>
+  C:/Users/Admin/AppData/Local/Arm/Packs/ARM/Cortex_DFP/1.1.0/Device/ARMCM4/Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
