@@ -1159,16 +1159,19 @@ void send_data_to_arduino(uint8_t start_marker, uint8_t frequency,
 }
 
 /* TCP connection state functions */
-uint8_t is_tcp_connected(void) {
+uint8_t is_tcp_connected(void) 
+{
 	return tcp_connection_state;
 }
 
-void set_tcp_connection_state(uint8_t state) {
+void set_tcp_connection_state(uint8_t state) 
+{
 	tcp_connection_state = state;
 }
 
 /* GPIO CONFIGURATION FUNCTION FOR ADC AND TIMER FOR FRQ 10KHz DUTY 50 */
-static void gpio_config(void) {
+static void gpio_config(void) 
+{
 	gpio_init_type gpio_initstructure;
 	crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
 	crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
@@ -1215,7 +1218,8 @@ static void gpio_config(void) {
 }
 
 //CLOCK CONFIGURATION FUNCTION FOR TIMER AND GPIO PORT
-void crm_configuration(void) {
+void crm_configuration(void) 
+{
 	/* tmr3 clock enable */
 	crm_periph_clock_enable(CRM_TMR3_PERIPH_CLOCK, TRUE);
 
@@ -1228,7 +1232,8 @@ void crm_configuration(void) {
 }
 
 //MODBUS SERVER INITIALIZATION FUNCTION
-void modbus_server_init(void) {
+void modbus_server_init(void) 
+{
 	err_t err;
 	printf("Initializing Modbus server");
 
@@ -1250,7 +1255,8 @@ void modbus_server_init(void) {
 }
 
 //DMA CONFIGURATION FUNCTION FOR ADC
-static void dma_config(void) {
+static void dma_config(void) 
+{
 	dma_init_type dma_init_struct;
 	crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
 	dma_reset(DMA1_CHANNEL1);
@@ -1276,7 +1282,8 @@ static void dma_config(void) {
  * @retval none
  */
 //ADC CONFIGURATION FUNCTION TO GET ADC VALUES
-static void adc_config(void) {
+static void adc_config(void) 
+{
 	adc_base_config_type adc_base_struct;
 	crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
 	crm_adc_clock_div_set(CRM_ADC_DIV_6);
@@ -1371,14 +1378,16 @@ float compute_rms(uint8_t channel_index) {
         float voltage = (adc_value * V_REF) / ADC_RES; // Convert ADC value to voltage
         sum += voltage * voltage;  // Square and accumulate
 
-        printf("Sample %d for channel index %d: sum = %f\n", sample_index, channel_index, sum);
+        printf("Sample %d for channel index %d: sum = %f\n", sample_index, 
+				channel_index, sum);
 
         sample_index++;  // Increment sample index
     }
 
     if (sample_index == NUM_SAMPLES) { // Compute RMS after collecting all samples
         rms_value = sqrt(sum / NUM_SAMPLES);
-        printf("Computed RMS for channel index %d: %f\n", channel_index, rms_value);
+        printf("Computed RMS for channel index %d: %f\n", channel_index, 
+				rms_value);
 
         // Reset for next cycle
         sample_index = 0;
@@ -2489,7 +2498,8 @@ void feedback_voltage(void) {
 	if (mapped_value[1] < lower_limit) {
 // If below 180V, increase duty cycle
 		phase1_amp = phase1_amp + 1;
-		if (phase1_amp > max_amplitude) phase1_amp = max_amplitude;
+		if (phase1_amp > max_amplitude) 
+			phase1_amp = max_amplitude;
 		printf("Feedback Voltage\r\n");
 		printf("Phase1 low (%d) - increasing to: %d\r\n",
 				mapped_value[1], phase1_amp);
@@ -2497,7 +2507,8 @@ void feedback_voltage(void) {
 	} else if (mapped_value[1] > upper_limit) {
 // If above 220V, decrease duty cycle
 		phase1_amp = phase1_amp - 1;
-		if (phase1_amp < min_amplitude) phase1_amp = min_amplitude;
+		if (phase1_amp < min_amplitude) 
+			phase1_amp = min_amplitude;
 		printf("Phase1 high (%d) - decreasing to: %d\r\n",
 		        		mapped_value[1], phase1_amp);
 		//set_timer2_duty_cycle(upper_limit);
@@ -2506,13 +2517,15 @@ void feedback_voltage(void) {
 // Channel 2
 	if (mapped_value[2] < lower_limit) {
 		phase2_amp = phase2_amp + 1;
-		if (phase2_amp > max_amplitude) phase2_amp = max_amplitude;
+		if (phase2_amp > max_amplitude) 
+			phase2_amp = max_amplitude;
 		printf("Phase2 low (%d) - increasing to: %d\r\n",
 				mapped_value[2], phase2_amp);
 		//set_timer5_duty_cycle(lower_limit);
 	} else if (mapped_value[2] > upper_limit) {
 		phase2_amp = phase2_amp - 1;
-		if (phase2_amp < min_amplitude) phase2_amp = min_amplitude;
+		if (phase2_amp < min_amplitude) 
+			phase2_amp = min_amplitude;
 		printf("Phase2 high (%d) - decreasing to: %d\r\n",
 		        		mapped_value[2], phase2_amp);
 		//set_timer5_duty_cycle(upper_limit);
@@ -2521,23 +2534,30 @@ void feedback_voltage(void) {
 // Channel 3
 	if (mapped_value[3] < lower_limit) {
 		phase3_amp = phase3_amp + 1;
-		if (phase3_amp > max_amplitude) phase3_amp = max_amplitude;
+		if (phase3_amp > max_amplitude) 
+			phase3_amp = max_amplitude;
 		printf("Phase3 low (%d) - increasing to: %d\r\n",
 		        		mapped_value[3], phase3_amp);
 		//set_timer10_duty_cycle(lower_limit);
 	} else if (mapped_value[3] > upper_limit) {
 		phase3_amp = phase3_amp - 1;
-		if (phase3_amp < min_amplitude) phase3_amp = min_amplitude;
+		if (phase3_amp < min_amplitude) 
+			phase3_amp = min_amplitude;
 		printf("Phase3 high (%d) - decreasing to: %d\r\n",
 		        		mapped_value[3], phase3_amp);
 		//set_timer10_duty_cycle(upper_limit);
 	}
 	// Safety condition: If all phases are at max amplitude but voltage is still too low
 	// OR if all phases are at min amplitude but voltage is still too high
-	if ((phase1_amp >= max_amplitude && phase2_amp >= max_amplitude && phase3_amp >= max_amplitude &&
-	    (mapped_value[1] < lower_limit || mapped_value[2] < lower_limit || mapped_value[3] < lower_limit)) ||
-	    (phase1_amp <= min_amplitude && phase2_amp <= min_amplitude && phase3_amp <= min_amplitude &&
-	    (mapped_value[1] > upper_limit || mapped_value[2] > upper_limit || mapped_value[3] > upper_limit))) {
+	if ((phase1_amp >= max_amplitude && phase2_amp >= max_amplitude 
+		&& phase3_amp >= max_amplitude &&
+	    (mapped_value[1] < lower_limit || mapped_value[2] < lower_limit 
+				|| mapped_value[3] < lower_limit)) |
+		|(phase1_amp <= min_amplitude && phase2_amp <= min_amplitude 
+				&& phase3_amp <= min_amplitude 
+				&& (mapped_value[1] > upper_limit 
+						|| mapped_value[2] > upper_limit 
+						|| mapped_value[3] > upper_limit))) {
 
 	     // Disconnect relay as a safety measure
 	     gpio_bits_reset(GPIOE, RELAY_2);
@@ -2912,9 +2932,16 @@ void main(void) {
 	printf("PHY ID: 0x%08X\n", phy_id);
 
 // Check if the PHY ID matches LAN8720 (example)
-	if (phy_id == 0x0181B8A0) {
+	if (phy_id == 0x0181B8A0) 
+	{
 		printf("Detected DM9162 PHY\n");
-	} else {
+	} 
+	else if(phy_id == 0x0007C0F1)
+	{
+		printf("Detected LAN8720 PHY\n");
+	}
+	else 
+	{
 		printf("Unknown PHY detected\n");
 	}
 
