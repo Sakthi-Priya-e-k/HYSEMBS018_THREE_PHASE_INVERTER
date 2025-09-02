@@ -1143,7 +1143,8 @@ void uart_transmit_number(int number)
  * @brief  Function to send data to Arduino in the expected format
  * @note   Sends raw bytes (not ASCII/string) in the format Arduino expects
  */
-void send_data_to_arduino(uint8_t start_marker, uint8_t frequency, uint8_t phase1_amp, uint8_t phase2_amp, uint8_t phase3_amp)
+void send_data_to_arduino(uint8_t start_marker, uint8_t frequency, 
+		uint8_t phase1_amp, uint8_t phase2_amp, uint8_t phase3_amp)
 {
 	// Send each byte individually without any separators
 	uart_transmit_byte(start_marker);  // Start marker (255)
