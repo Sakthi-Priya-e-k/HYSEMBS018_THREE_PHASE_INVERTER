@@ -914,8 +914,7 @@ void LCD_GPIO_Init(void) {
 	gpio_init_struct.gpio_pins = GPIO_PINS_0 | GPIO_PINS_1 | GPIO_PINS_2
 
 	| GPIO_PINS_3 | GPIO_PINS_4 | GPIO_PINS_5 | GPIO_PINS_6 | GPIO_PINS_7
-			| GPIO_PINS_8 |
-			GPIO_PINS_9 | GPIO_PINS_10;
+			| GPIO_PINS_8 | GPIO_PINS_9 | GPIO_PINS_10;
 	gpio_init(GPIOD, &gpio_init_struct);
 
 	gpio_bits_reset(GPIOD, SW_BUZZ_PIN);
